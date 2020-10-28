@@ -6,18 +6,20 @@ package com.lfj.springbootsecurity.simplefactory;
  * @author lfj
  * @date 2020/10/10 9:58
  */
-public class PersonFactory {
+class PersonFactory {
 
-    public static Person createPerson(Class clazz) {
+    /**
+     * 创建实例方法
+     * @param clazz 需要创建的Class对象
+     * @return Person
+     */
+    static Person createPerson(Class<? extends Person> clazz) {
         try {
-            Person person = (Person) Class.forName(clazz.getName()).newInstance();
-            return person;
+            return clazz.newInstance();
         } catch (InstantiationException e) {
             System.out.println("必须指定人类的颜色");
         } catch (IllegalAccessException e) {
             System.out.println("人类定义错误！");
-        } catch (ClassNotFoundException e) {
-            System.out.println("混蛋，你指定的人类找不到！");
         }
         return null;
     }

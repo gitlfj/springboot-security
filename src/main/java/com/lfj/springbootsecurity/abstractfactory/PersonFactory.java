@@ -6,26 +6,33 @@ package com.lfj.springbootsecurity.abstractfactory;
  * @author lfj
  * @date 2020/10/10 16:16
  */
-public class PersonFactory implements IFactoryPerson {
+public class PersonFactory implements IFactory {
+
 
     /**
-     * 创建方法
+     * 创建人工厂
      *
+     * @param clazz class
      * @return person
      */
     @Override
-    public IPerson createPerson(Class calzz) {
+    public IPerson createPerson(Class<? extends IPerson> clazz){
         try {
-            IPerson o = (IPerson) Class.forName(calzz.getName()).newInstance();
-            return o;
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+            return clazz.newInstance();
+        } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
         return null;
     }
 
+    /**
+     * 创建老虎工厂
+     *
+     * @param clazz class
+     * @return person
+     */
+    @Override
+    public ITiger createTiger(Class<? extends ITiger> clazz) {
+        return null;
+    }
 }

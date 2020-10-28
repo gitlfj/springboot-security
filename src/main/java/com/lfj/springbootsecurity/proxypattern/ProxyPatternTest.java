@@ -34,6 +34,7 @@ public class ProxyPatternTest {
         poProxy.makeEyesWithMan();
         poProxy.makeLove();
 
+//        看似王婆，实则潘金莲
 //        潘金莲在勾引男人！
 //        潘金莲在做羞羞的事情！
     }
